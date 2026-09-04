@@ -34,3 +34,8 @@ Turn the current working setup into a portable Windows voice application that do
 ## License
 
 Third-party license notices will be included before the first public release.
+
+## AI Assistance Disclosure
+
+Portions of this codebase were generated with assistance from OpenAI's GPT-5.6 Sol.
+All generated code included in this repository was subsequently reviewed, tested, and accepted by a human maintainer before publication.
