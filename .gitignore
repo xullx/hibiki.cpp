@@ -1,0 +1,20 @@
+﻿# Models
+models/
+*.gguf
+*.safetensors
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Builds
+build/
+dist/
+
+# Runtime output
+output.wav
+*.log
+
+# Local/debug
+mic_profile.json

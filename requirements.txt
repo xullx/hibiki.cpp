@@ -1,0 +1,5 @@
+numpy==1.26.4
+openai==3.8.0
+prompt_toolkit==3.0.52
+PyAudio==0.2.14
+soundfile==0.14.0
