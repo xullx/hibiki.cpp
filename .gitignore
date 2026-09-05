@@ -18,3 +18,9 @@ output.wav
 
 # Local/debug
 mic_profile.json
+
+# Generated audio
+*.wav
+
+# Local backup snapshots
+*.pre-*

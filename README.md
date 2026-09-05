@@ -1,4 +1,4 @@
-﻿# HIBIKI.CPP
+# YUKI.CPP
 
 Local-first, low-latency voice AI built around LiquidAI LFM2.5-Audio and llama.cpp.
 
@@ -18,7 +18,7 @@ Early developer preview.
 
 ```powershell
 py -m pip install -r requirements.txt
-py .\src\hibiki_client.py --base-url http://127.0.0.1:8080/v1 --mode interleaved --hands-free
+py .\src\yuki_client.py --base-url http://127.0.0.1:8080/v1 --mode interleaved --hands-free
 ```
 
 ## Models
@@ -39,3 +39,4 @@ Third-party license notices will be included before the first public release.
 
 Portions of this codebase were generated with assistance from OpenAI's GPT-5.6 Sol.
 All generated code included in this repository was subsequently reviewed, tested, and accepted by a human maintainer before publication.
+

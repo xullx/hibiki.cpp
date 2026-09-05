@@ -325,8 +325,8 @@ class AudioRecorder:
 
 
 SYSTEM_PROMPTS = {
-    "asr": "Perform ASR.",
-    "tts": "Perform TTS. Use the UK female voice.",
+    "asr": "Perform ASR in japanese.",
+    "tts": "Perform TTS in japanese.",
     "interleaved": "Respond with interleaved text and audio.",
 }
 
@@ -350,7 +350,15 @@ def create_audio_message(wav_data):
     }
 
 
-def create_stream_single_shot(client, mode, text=None, wav_data=None, max_tokens=512):
+def create_stream_single_shot(
+    client,
+    mode,
+    text=None,
+    wav_data=None,
+    max_tokens=512,
+    audio_temperature=None,
+    audio_top_k=None,
+):
     """Create a single-shot request for ASR/TTS (always resets context)."""
     messages = [{"role": "system", "content": SYSTEM_PROMPTS[mode]}]
 
@@ -362,12 +370,22 @@ def create_stream_single_shot(client, mode, text=None, wav_data=None, max_tokens
         messages.append(create_text_message(text))
         modalities.append("audio")
 
+    extra_body = {}
+
+    if mode == "tts":
+        if audio_temperature is not None:
+            extra_body["audio_temperature"] = float(audio_temperature)
+
+        if audio_top_k is not None:
+            extra_body["audio_top_k"] = int(audio_top_k)
+
     return client.chat.completions.create(
         model="",
         modalities=modalities,
         messages=messages,
         stream=True,
         max_tokens=max_tokens,
+        extra_body=extra_body,
     )
 
 
@@ -425,7 +443,7 @@ def process_stream(stream, audio_player=None):
             total_samples += len(samples)
 
             # Print note symbol for audio progress
-            print("â™ª", end="", flush=True)
+            print("\u266a", end="", flush=True)
 
             if audio_player:
                 _audio_add_t0 = time.time()
@@ -751,6 +769,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+
 
 
 
